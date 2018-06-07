@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
@@ -55,6 +56,16 @@ namespace ASP.Net_MVC5Membresias.Controllers
                     //// Borrar rol
                     //var rolVendedor = roleManager.FindByName("ApruebPrestamos");
                     //roleManager.Delete(rolVendedor);
+                    #endregion
+                    #region SQLInyection Solucion
+                    //Solucion 1 : Queries parametrizados
+                    //var query = @"Select * from PERSONAS WHERE Nombre = @nombre";
+                    //personas = db.Database.SqlQuery<Persona>(query, new SqlParameter("@nombre", nombre)).ToList();
+
+                    ////Solucion 2 : Utilizando Entity Framework y lambda
+                    //personas = db.Personas.Where(x => x.Nombre == Nombre).ToList();
+
+                    ////Solucion 3 (En ADO.NET): Utilizar Stored Procedures (Curso de C#)
                     #endregion
 
                 }
